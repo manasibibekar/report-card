@@ -45,8 +45,8 @@ class SubjectMarks(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     marks = models.IntegerField()
 
-    def __str__(self) -> str:
-        return f'{self.student.student_name} {self.subject.subject_name}'
+    # def __str__(self) -> str:
+    #     return f'{self.student.student_name} {self.subject.subject_name}'
     
     class Meta:
         unique_together = ['student', 'subject']

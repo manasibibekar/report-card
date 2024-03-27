@@ -5,4 +5,7 @@ admin.site.register(StudentId)
 admin.site.register(Department)
 admin.site.register(Subject)
 admin.site.register(Student)
-admin.site.register(SubjectMarks)
+
+class SubjectMarksDisplay(admin.ModelAdmin):
+    list_display = ['student', 'subject', 'marks']
+admin.site.register(SubjectMarks, SubjectMarksDisplay)

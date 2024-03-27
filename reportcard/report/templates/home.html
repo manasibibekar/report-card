@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+</head>
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<body>
+    <form>
+        <input type="text" placeholder="Search" name="search_html">
+        <button>Search</button>
+    </form>
+    <br>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Student Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{student.student_id}}</td>
+            <td>{{student.student_name}}</td>
+            <td>{{student.department.department}}</td>
+            <td>{{student.student_email}}</td>
+            <td>{{student.student_age}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+
+    <!-- copied below div code from documentation -->
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if students.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ students.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ students.number }} of {{ students.paginator.num_pages }}.
+            </span>
+            <br>
+            {% if students.has_next %}
+            <a href="?page={{ students.next_page_number }}">next</a>
+            <a href="?page={{ students.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+</body>
+
+</html>
