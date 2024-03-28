@@ -20,5 +20,6 @@ from report.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homepage, name='home')
+    path('', homepage, name='home'),
+    path('see_marks/<student_id>', see_marks, name='see_marks_name')
 ]

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Sum
+
 
 def homepage(request):
 
@@ -24,3 +25,10 @@ def homepage(request):
 
     context = {"students": page_obj}
     return render(request, 'home.html', context)
+
+
+def see_marks(request, student_id):
+    queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
+    total_marks_dict = queryset.aggregate(total_marks = Sum('marks'))
+    total_marks = total_marks_dict.get('total_marks')
+    return render(request, 'see_marks.html', {'queryset': queryset, 'total_marks': total_marks})

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+</head>
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<body>
+    <h4>Rank: </h4>
+    <h4>Total: {{total_marks}}</h4>
+    <table>
+        {% for query in queryset %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{query.subject.subject_name}}</td>
+            <td>{{query.marks}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
